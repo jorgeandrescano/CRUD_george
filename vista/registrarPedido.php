@@ -106,6 +106,25 @@ require_once('layoutSuperior.php');
             let result = await response.text();
             document.getElementById('mensajeDetalle').innerHTML = result;
         }
+
+        async function eliminarDetallePedido(idDetallePedido) {
+            //alert(idDetallePedido);
+            if(confirm('¿Está seguro de eliminar el detalle del producto'+idDetallePedido)){
+
+            let formData = new FormData();
+            formData.append("idDetallePedido", idDetallePedido);
+            formData.append("accion", 'eliminarDetalle');
+            let response = await fetch('../controlador/controladorPedido.php', {
+                method: 'POST',
+                body: formData
+            });
+            let result = await response.text();
+            alert(result);
+            listarDetallePedido();
+            //document.getElementById('mensajeDetalle').innerHTML = result;
+            }
+        }
+        
     </script>
 <?php 
 require_once('layoutInferior.php');

@@ -6,19 +6,19 @@
 #superior{
     width: 100%;
     height: 80px;
-    background-color: brown;
+    background-color: rgb(125, 150, 146);
 }
 
 #medio{
     width: 100%;
     height: 400px;
-    background-color: blue;
+    background-color: rgb(230, 27, 162);
 }
 
 #izquierdo{
     width: 20%;
     height: 400px;
-    background-color: rgb(13, 216, 131);
+    background-color: rgb(60, 91, 126);
     float: left;
 }
 
