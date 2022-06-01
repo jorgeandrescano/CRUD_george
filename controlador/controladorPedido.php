@@ -57,7 +57,7 @@ if(isset($_POST['accion'])){
                     $detallePedido = new DetallePedido();
                     $detallePedido->setidPedido($idPedido);
                     $listaDetalle = $detallePedido->listarDetallePedido($detallePedido);
-                    $header = "table border='1' align='center'>
+                    $header = "<table border='1' align='center'>
                     <thead>
                     <tr>
                     <th>Id Prod.</th>
@@ -65,7 +65,7 @@ if(isset($_POST['accion'])){
                     <th>Cantidad</th>
                     <th>Vr. Unitario COP</th>
                     <th>Subtotal COP</th>
-                    <th>Acciones</th>
+                    <th>Acción</th>
                     </tr></thead>";
                     $content = "";
                     $total = 0;
@@ -83,8 +83,7 @@ if(isset($_POST['accion'])){
                         <td>$detalle[cantidad]</td>
                         <td align='right'>$precio</td>
                         <td align='right'>$subtotal</td>
-                        <td align='center'> <button type='button' onclick='eliminarDetallePedido($detalle[idDetallePedido])'>X</td>
-
+                        <td align='center'> <button type='button' onclick='eliminarDetallePedido($detalle[idDetallePedido])'>X</button></td>
                         </tr>";
                     }
                     $total = number_format($total,2,",",".");
@@ -99,7 +98,7 @@ if(isset($_POST['accion'])){
                         $idDetallePedido = $_POST['idDetallePedido'];
                         $detallePedido = new DetallePedido();
                         $detallePedido->setidDetallePedido($idDetallePedido);
-                        $detallePedido->eliminarDetallePedido($idDetallePedido);
+                        echo $detallePedido->eliminarDetallePedido($detallePedido);
                     break;
     }   
 }

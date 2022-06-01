@@ -54,11 +54,8 @@ class Pedido{
 
     public function listarPedido(){
         $baseDatos = Conexion::conectar();
-        $sql = $baseDatos->query('SELECT pedido.*,
-        cliente.razonSocial AS nombreCliente
-        FROM 
-        pedido 
-        INNER JOIN cliente ON pedido.idCliente = cliente.idCliente
+        $sql = $baseDatos->query('SELECT pedido.*,cliente.razonSocial AS nombreCliente
+        FROM pedido INNER JOIN cliente ON pedido.idCliente = cliente.idCliente
         ORDER BY idPedido DESC');
         $sql->execute();
         Conexion::desconectar($baseDatos);

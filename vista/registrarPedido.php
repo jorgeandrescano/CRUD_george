@@ -109,9 +109,8 @@ require_once('layoutSuperior.php');
 
         async function eliminarDetallePedido(idDetallePedido) {
             //alert(idDetallePedido);
-            if(confirm('¿Está seguro de eliminar el detalle del producto'+idDetallePedido)){
-
-            let formData = new FormData();
+            if(confirm('¿Está seguro de eliminar el detalle del producto' + idDetallePedido +'?')){
+            formData = new FormData();
             formData.append("idDetallePedido", idDetallePedido);
             formData.append("accion", 'eliminarDetalle');
             let response = await fetch('../controlador/controladorPedido.php', {

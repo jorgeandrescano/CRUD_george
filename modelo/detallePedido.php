@@ -96,12 +96,11 @@ class DetallePedido{
             $sql->execute();
         }
         catch(Exception $e){
-            $mensaje = $e->getMessage(); //
+            $mensaje = $e->getMessage();
         }
 
         Conexion::desconectar($baseDatos);
         return $mensaje;
     }
 }
-
 ?>
