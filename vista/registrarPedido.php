@@ -109,20 +109,35 @@ require_once('layoutSuperior.php');
 
         async function eliminarDetallePedido(idDetallePedido) {
             //alert(idDetallePedido);
-            if(confirm('¿Está seguro de eliminar el detalle del producto' + idDetallePedido +'?')){
-            formData = new FormData();
-            formData.append("idDetallePedido", idDetallePedido);
-            formData.append("accion", 'eliminarDetalle');
-            let response = await fetch('../controlador/controladorPedido.php', {
-                method: 'POST',
-                body: formData
-            });
-            let result = await response.text();
-            alert(result);
-            listarDetallePedido();
-            //document.getElementById('mensajeDetalle').innerHTML = result;
+            Swal.fire({
+                title: '¿Está seguro de eliminar el pedido?',
+                text: "¡Esta eliminación no se puede revertir!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si,¡eliminar!'
+                }).then(async(result) => {
+                if (result.isConfirmed) {
+                formData = new FormData();
+                formData.append("idDetallePedido", idDetallePedido);
+                formData.append("accion", 'eliminarDetalle');
+
+                let response = await fetch('../controlador/controladorPedido.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                let result = await response.text();
+
+                 Swal.fire(
+                '¡Pedido eliminado!',
+                'El pedido ha sido borrado.',
+                'success'
+                    );
+                listarDetallePedido();
+                }
+            }); 
             }
-        }
         
     </script>
 <?php 
